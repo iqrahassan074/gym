@@ -1,0 +1,8 @@
+
+{
+  "name": "Oxygen Gym Karachi - 24/7 Fitness",
+  "description": "A modern, responsive website for Oxygen Gym Karachi featuring 24/7 access, professional training, and smart fitness assistant integration.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

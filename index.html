@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oxygen Gym Karachi | 24/7 Elite Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --accent: #2563eb;
+        --accent-glow: rgba(37, 99, 235, 0.4);
+      }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #000;
+        color: #fff;
+      }
+      h1, h2, h3, .font-heading {
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+      }
+      .mesh-bg {
+        background-color: #000;
+        background-image: 
+          radial-gradient(at 0% 0%, hsla(221,83%,16%,1) 0, transparent 50%), 
+          radial-gradient(at 50% 0%, hsla(221,83%,10%,1) 0, transparent 50%);
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        box-shadow: 0 0 40px rgba(37, 99, 235, 0.1);
+      }
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+        color: transparent;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .nav-blur {
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #000; }
+      ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom": "https://esm.sh/react-dom@^19.2.3",
+        "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+        "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="mesh-bg selection:bg-blue-600/40 overflow-x-hidden">
+    <div id="root"></div>
+    <script>
+      const observeReveals = () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      };
+      document.addEventListener('DOMContentLoaded', observeReveals);
+      // Re-run on route change (simplified)
+      const observerCallback = () => observeReveals();
+      const targetNode = document.getElementById('root');
+      const config = { childList: true, subtree: true };
+      const observer = new MutationObserver(observerCallback);
+      observer.observe(targetNode, config);
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
